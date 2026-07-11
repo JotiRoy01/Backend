@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "I learn this backend project from hitesh chowdary on youtube",
+  "keywords": [
+    "javascript",
+    "backend",
+    "express",
+    "node.js"
+  ],
+  "homepage": "https://github.com/JotiRoy01/Backend#readme",
+  "bugs": {
+    "url": "https://github.com/JotiRoy01/Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JotiRoy01/Backend.git"
+  },
+  "license": "ISC",
+  "author": "Joti Roy",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
