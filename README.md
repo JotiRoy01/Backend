@@ -15,4 +15,5 @@ mkdir controllers db middlewares models routes utils
 # Package
 ```bash
 npm i mongoose express dotenv
+npm i cookie-parser cors
 ```
