@@ -16,4 +16,8 @@ mkdir controllers db middlewares models routes utils
 ```bash
 npm i mongoose express dotenv
 npm i cookie-parser cors
+npm install mongoose-aggregate-paginate-v2
+npm install bcrypt
+npm install jsonwebtoken
 ```
+# Access Token Secret ```SHA252```
