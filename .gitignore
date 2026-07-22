@@ -220,3 +220,4 @@ node_modules/
 ./.env
 .env
 .env/
+public/temp/test-upload.txt

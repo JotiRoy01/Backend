@@ -21,4 +21,16 @@ import userRoutes from "./routes/user.routes.js";
 // routes declaration
 app.use("/api/v1/users", userRoutes);
 
+app.use((err, req, res, next) => {
+    if (err?.code === "LIMIT_UNEXPECTED_FILE") {
+        return res.status(400).json({
+            message: `Unexpected file field '${err.field}'. Allowed fields are 'avatar' and 'coverImage'.`
+        });
+    }
+
+    return res.status(err?.statusCode || 500).json({
+        message: err?.message || "Internal Server Error"
+    });
+});
+
 export {app};

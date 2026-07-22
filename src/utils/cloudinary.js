@@ -1,7 +1,7 @@
-import { v2 as cloudinay} from "cloudinary";
+import { v2 as cloudinary} from "cloudinary";
 import fs from "fs"; 
 
-
+console.log("Cloudinary configuration:", process.env.CLOUDINARY_CLOUD_NAME, process.env.CLOUDINARY_API_KEY, process.env.CLOUDINARY_API_SECRET);
 
 cloudinary.config({ 
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -9,19 +9,24 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+console.log("Cloudinary configuration:");
 
 const uploadOnCloudinary = async (filePath) => {
     try {
-        if(!filePath) {
-            throw new Error("File path and folder name are required for uploading to Cloudinary.");
-        } 
+        if(!filePath) return null;
+            
         const response = await cloudinary.uploader.upload(filePath,{
             resource_type: "auto",
         })
         console.log("File uploaded to Cloudinary successfully.", response.url);
+        
+        fs.unlinkSync(filePath)
+
         return response 
     }catch (error) {
-        fs.unlinkSync(filePath); // Delete the file from local storage if upload fails
+        if (filePath && fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath); // Delete the file from local storage if upload fails
+        }
         
         return null;
     }
